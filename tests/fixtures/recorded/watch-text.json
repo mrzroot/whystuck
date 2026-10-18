@@ -1,0 +1,63 @@
+{
+ "expect": "watch",
+ "name": "watch-text",
+ "snapshot": {
+  "alt_screen": false,
+  "capabilities": {
+   "collector": "linux-proc",
+   "sockets": true,
+   "syscall": true
+  },
+  "command": [
+   "sh",
+   "-c",
+   "echo 'Watching for file changes...'; read x"
+  ],
+  "cpu_fraction": 0.0,
+  "idle_seconds": 1.0016097280004033,
+  "lock_holders": {},
+  "platform": "linux",
+  "processes": [
+   {
+    "argv": [
+     "sh",
+     "-c",
+     "echo 'Watching for file changes...'; read x"
+    ],
+    "blocking_read": {
+     "fd": 0,
+     "inferred": false,
+     "target": "/dev/pts/0",
+     "tty": true
+    },
+    "comm": "sh",
+    "cpu_ticks": 0,
+    "is_root": true,
+    "open_paths": [],
+    "pid": 109459,
+    "ppid": 109458,
+    "state": "S",
+    "stdin": "/dev/pts/0",
+    "stdin_tty": true,
+    "syscall": {
+     "args": [
+      0,
+      140722284260703,
+      1,
+      0,
+      0,
+      0
+     ],
+     "name": "read",
+     "nr": 0
+    },
+    "wchan": "wait_woken"
+   }
+  ],
+  "proxy_vars": [],
+  "root_pid": 109459,
+  "sockets": [],
+  "tail": "Watching for file changes...\n",
+  "version": 1
+ }
+}

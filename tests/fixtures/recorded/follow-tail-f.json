@@ -1,0 +1,58 @@
+{
+ "expect": "follow",
+ "name": "follow-tail-f",
+ "snapshot": {
+  "alt_screen": false,
+  "capabilities": {
+   "collector": "linux-proc",
+   "sockets": true,
+   "syscall": true
+  },
+  "command": [
+   "tail",
+   "-f",
+   "/dev/null"
+  ],
+  "cpu_fraction": 0.0,
+  "idle_seconds": 1.0014903270002833,
+  "lock_holders": {},
+  "platform": "linux",
+  "processes": [
+   {
+    "argv": [
+     "tail",
+     "-f",
+     "/dev/null"
+    ],
+    "blocking_read": null,
+    "comm": "tail",
+    "cpu_ticks": 0,
+    "is_root": true,
+    "open_paths": [],
+    "pid": 110232,
+    "ppid": 110174,
+    "state": "S",
+    "stdin": "/dev/pts/0",
+    "stdin_tty": true,
+    "syscall": {
+     "args": [
+      0,
+      0,
+      140729712402416,
+      140729712402480,
+      0,
+      0
+     ],
+     "name": "clock_nanosleep",
+     "nr": 230
+    },
+    "wchan": "hrtimer_nanosleep"
+   }
+  ],
+  "proxy_vars": [],
+  "root_pid": 110232,
+  "sockets": [],
+  "tail": "",
+  "version": 1
+ }
+}

@@ -1,0 +1,59 @@
+{
+ "expect": "stdin_wait",
+ "name": "stdin-wait-cat",
+ "snapshot": {
+  "alt_screen": false,
+  "capabilities": {
+   "collector": "linux-proc",
+   "sockets": true,
+   "syscall": true
+  },
+  "command": [
+   "cat"
+  ],
+  "cpu_fraction": 0.0,
+  "idle_seconds": 1.001441557000362,
+  "lock_holders": {},
+  "platform": "linux",
+  "processes": [
+   {
+    "argv": [
+     "cat"
+    ],
+    "blocking_read": {
+     "fd": 0,
+     "inferred": false,
+     "target": "/dev/pts/0",
+     "tty": true
+    },
+    "comm": "cat",
+    "cpu_ticks": 0,
+    "is_root": true,
+    "open_paths": [],
+    "pid": 107866,
+    "ppid": 107768,
+    "state": "S",
+    "stdin": "/dev/pts/0",
+    "stdin_tty": true,
+    "syscall": {
+     "args": [
+      0,
+      140283925270528,
+      262144,
+      0,
+      0,
+      0
+     ],
+     "name": "read",
+     "nr": 0
+    },
+    "wchan": "wait_woken"
+   }
+  ],
+  "proxy_vars": [],
+  "root_pid": 107866,
+  "sockets": [],
+  "tail": "",
+  "version": 1
+ }
+}

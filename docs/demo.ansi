@@ -1,0 +1,164 @@
+[1mwhystuck 0.1.0 demo[0m · Python 3.13.5 · Linux x86_64 · idle threshold 1.5s
+Each scenario runs a small stand-in program (a script named like the real tool) under whystuck.
+The stand-ins only imitate the stall. The inspection that follows (process tree, sockets, locks) is real.
+Terminal escape sequences are stripped from the display below.
+
+[1;36m[1/8] pager[0m — `git log`: output is handed to a pager (less) that waits for q
+commit 9f3c2ab41d7e (HEAD -> main)
+Author: mrzroot <mrzroot@users.noreply.github.com>
+
+    Add idle watchdog
+
+commit 71be0c9a55f2
+
+    Initial commit
+(END)
+[2m─── whystuck ───────────────────────────────────────────────────[0m
+ No output for 1.6s
+ ▸ [1;31mSTUCK: Waiting in a pager[0m  [confidence: high]
+   Output was handed to a pager that waits for you to press q.
+[1m Evidence[0m
+   • descendant process is a pager: less (pid 235596)
+   • last output line looks like a pager prompt: "(END)"
+   • pid 235596 (less): blocked in read() on fd 3 -> /dev/tty (terminal input)
+[1m Fix (non-interactive)[0m
+   • [36mgit --no-pager log[0m
+   • [36mGIT_PAGER=cat PAGER=cat git log[0m
+   • [36mexport PAGER=cat GIT_PAGER=cat   # once, for the whole session[0m
+[2m────────────────────────────────────────────────────────────────[0m
+  expected `pager`, whystuck said `pager` [32mOK[0m  (command stopped by whystuck: stuck, exit 125)
+
+[1;36m[2/8] editor[0m — `git commit`: git opens an editor and waits for it to close
+hint: Waiting for your editor to close the file...
+-- INSERT --
+[2m─── whystuck ───────────────────────────────────────────────────[0m
+ No output for 1.6s
+ ▸ [1;31mSTUCK: Waiting in a text editor[0m  [confidence: high]
+   `git commit` opened an editor and is waiting for it to be closed.
+[1m Evidence[0m
+   • descendant process is an editor: vim (pid 236399)
+   • it is editing a git/editor temp file: /tmp/whystuck-demo-4wv3mftp/work/.git/COMMIT_EDITMSG
+   • output says: "Waiting for your editor to close the file..."
+   • pid 236399 (vim): blocked in read() on fd 4 -> /dev/tty (terminal input)
+[1m Fix (non-interactive)[0m
+   • [36mgit commit -m "your message"[0m
+   • [36mgit commit -F message.txt   # message from a file[0m
+   • [36mGIT_EDITOR=true git commit   # accept the template message[0m
+   • [36mexport GIT_EDITOR=true EDITOR=true   # once, for the whole session[0m
+[2m Also matched: watch (low)[0m
+[2m────────────────────────────────────────────────────────────────[0m
+  expected `editor`, whystuck said `editor` [32mOK[0m  (command stopped by whystuck: stuck, exit 125)
+
+[1;36m[3/8] confirm[0m — `apt-get install ripgrep`: an installer asks [Y/n]
+Reading package lists... Done
+The following NEW packages will be installed:
+  ripgrep
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Do you want to continue? [Y/n] 
+[2m─── whystuck ───────────────────────────────────────────────────[0m
+ No output for 1.6s
+ ▸ [1;31mSTUCK: Waiting for a yes/no answer[0m  [confidence: high]
+   The command is waiting for a yes/no (or Enter) answer.
+[1m Evidence[0m
+   • last output line is a yes/no style prompt: "Do you want to continue? [Y/n]"
+   • pid 236407 (apt-get): blocked in read() on fd 0 -> /dev/pts/0 (terminal input)
+[1m Fix (non-interactive)[0m
+   • [36mDEBIAN_FRONTEND=noninteractive apt-get install -y ripgrep[0m
+   • [36myes | apt-get install ripgrep   # answers y to everything: only for commands you trust[0m
+   • [36mcheck `apt-get --help` for --yes / -y / --force / --non-interactive[0m
+   • [36mfeed the answer instead: printf 'y\n' | whystuck -- apt-get install ripgrep[0m
+[2m────────────────────────────────────────────────────────────────[0m
+  expected `confirm`, whystuck said `confirm` [32mOK[0m  (command stopped by whystuck: stuck, exit 125)
+
+[1;36m[4/8] secret[0m — `sudo systemctl restart nginx`: sudo asks for a password on the terminal
+[sudo] password for demo: 
+[2m─── whystuck ───────────────────────────────────────────────────[0m
+ No output for 1.6s
+ ▸ [1;31mSTUCK: Waiting for a password / credential[0m  [confidence: high]
+   The command is asking for a password, passphrase or other credential.
+[1m Evidence[0m
+   • last output line asks for a credential: "[sudo] password for demo:"
+   • pid 236418 (sudo): blocked in read() on fd 5 -> /dev/tty (terminal input)
+[1m Fix (non-interactive)[0m
+   • [36msudo -n systemctl restart nginx   # fail instead of prompting (needs NOPASSWD)[0m
+   • [36mconfigure passwordless sudo for the specific command in /etc/sudoers.d/[0m
+   • [36mpass the secret via an env var or file the tool supports; never paste it into an agent transcript[0m
+[2m────────────────────────────────────────────────────────────────[0m
+  expected `secret`, whystuck said `secret` [32mOK[0m  (command stopped by whystuck: stuck, exit 125)
+
+[1;36m[5/8] watch[0m — `vitest`: a test runner starts in watch mode and never exits
+
+ DEV  v2.1.0 /project
+
+ OK src/add.test.ts (3 tests) 4ms
+
+ Test Files  1 passed (1)
+
+ PASS  Waiting for file changes...
+       press h to show help, press q to quit
+[2m─── whystuck ───────────────────────────────────────────────────[0m
+ No output for 1.6s
+ ▸ [1;31mSTUCK: Stuck in watch / full-screen mode[0m  [confidence: high]
+   The tool is in watch / interactive full-screen mode and will never exit by itself.
+[1m Evidence[0m
+   • recent output says it is watching: "PASS  Waiting for file changes..."
+   • process looks like a watch/TUI tool: vitest
+[1m Fix (non-interactive)[0m
+   • [36mvitest run   # single run instead of watch mode[0m
+   • [36mCI=true vitest   # many test runners disable watch mode when CI is set[0m
+   • [36mlook for a one-shot flag in `COMMAND --help` (run / --once / --no-watch)[0m
+[2m────────────────────────────────────────────────────────────────[0m
+  expected `watch`, whystuck said `watch` [32mOK[0m  (command stopped by whystuck: stuck, exit 125)
+
+[1;36m[6/8] server[0m — `python -m http.server 0 --bind 127.0.0.1`: a real dev server (python -m http.server) that is fine, just long-running
+Serving HTTP on 127.0.0.1 port 37653 (http://127.0.0.1:37653/) ...
+[2m─── whystuck ───────────────────────────────────────────────────[0m
+ No output for 1.6s
+ ▸ [1;32mNOT STUCK: Running a server[0m  [confidence: high]
+   It is running a server. It will keep running until stopped; that is normal, not a hang.
+[1m Evidence[0m
+   • listening TCP socket: 127.0.0.1:37653 (pid 236446)
+   • output says: "Serving HTTP on 127.0.0.1 port 37653 (http://127.0.0.1:37653/) ..."
+[1m If you need it to finish / not wait[0m
+   • [36mnohup /usr/bin/python3 -m http.server 0 --bind 127.0.0.1 > server.log 2>&1 &   # start it in the background, then poll the port[0m
+   • [36muse a process manager / a second terminal for servers, and run tests or curl against it from another command[0m
+   • [36magents: do not wait for a server command to exit; start it detached and check the port[0m
+[2m────────────────────────────────────────────────────────────────[0m
+  expected `server`, whystuck said `server` [32mOK[0m  (command stopped by whystuck: stopped, exit 125)
+
+[1;36m[7/8] lock[0m — `apt-get update`: waits for a lock that another process holds
+Reading package lists... Done
+Waiting for cache lock: Could not get lock /tmp/whystuck-demo-4wv3mftp/lock-frontend
+[2m─── whystuck ───────────────────────────────────────────────────[0m
+ No output for 1.6s
+ ▸ [1;31mSTUCK: Waiting for a lock[0m  [confidence: high]
+   The command is waiting for a lock that another process holds.
+[1m Evidence[0m
+   • recent output mentions a lock: "Waiting for cache lock: Could not get lock /tmp/whystuck-demo-4wv3mftp/lock-frontend"
+   • pid 236458 (apt-get) is blocked in flock()
+   • /tmp/whystuck-demo-4wv3mftp/lock-frontend is held open by pid 236457 (unattended-upgr)
+[1m Fix (non-interactive)[0m
+   • [36mwait for pid 236457 (unattended-upgr) to finish; stop it only if it is yours and truly stuck: kill 236457[0m
+   • [36mapt-get update -o DPkg::Lock::Timeout=120   # wait up to 2 min for the lock[0m
+   • [36mflock -w 30 LOCKFILE COMMAND   # bounded wait for a lock you control[0m
+[2m────────────────────────────────────────────────────────────────[0m
+  expected `lock`, whystuck said `lock` [32mOK[0m  (command stopped by whystuck: stuck, exit 125)
+
+[1;36m[8/8] network[0m — `git clone https://example.invalid/whystuck.git`: a TCP connect is never answered (local listener with a full backlog)
+Cloning into 'whystuck'...
+[2m─── whystuck ───────────────────────────────────────────────────[0m
+ No output for 1.6s
+ ▸ [1;31mSTUCK: Network connect not answered[0m  [confidence: high]
+   A TCP connection is not being answered (host unreachable, filtered or very slow).
+[1m Evidence[0m
+   • pid 236472 has a TCP connect() in progress to 127.0.0.1:58711 (SYN_SENT: no reply yet)
+[1m Fix (non-interactive)[0m
+   • [36mnc -vz -w 5 127.0.0.1 58711   # does a plain TCP connect work from here?[0m
+   • [36mcurl -v --connect-timeout 5 http://127.0.0.1:58711/[0m
+   • [36mno proxy variables are set: if this network needs a proxy or VPN, configure it[0m
+   • [36mGIT_HTTP_LOW_SPEED_LIMIT=1000 GIT_HTTP_LOW_SPEED_TIME=15 git clone https://example.invalid/whystuck.git   # abort slow transfers[0m
+   • [36mtry a mirror/registry mirror, another network, or check DNS/firewall for that address[0m
+[2m────────────────────────────────────────────────────────────────[0m
+  expected `network`, whystuck said `network` [32mOK[0m  (command stopped by whystuck: stuck, exit 125)
+
+Summary: 8/8 scenarios diagnosed as expected.

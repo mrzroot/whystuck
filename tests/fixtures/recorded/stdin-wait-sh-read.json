@@ -1,0 +1,63 @@
+{
+ "expect": "stdin_wait",
+ "name": "stdin-wait-sh-read",
+ "snapshot": {
+  "alt_screen": false,
+  "capabilities": {
+   "collector": "linux-proc",
+   "sockets": true,
+   "syscall": true
+  },
+  "command": [
+   "sh",
+   "-c",
+   "read x"
+  ],
+  "cpu_fraction": 0.0,
+  "idle_seconds": 1.0021700990000681,
+  "lock_holders": {},
+  "platform": "linux",
+  "processes": [
+   {
+    "argv": [
+     "sh",
+     "-c",
+     "read x"
+    ],
+    "blocking_read": {
+     "fd": 0,
+     "inferred": false,
+     "target": "/dev/pts/0",
+     "tty": true
+    },
+    "comm": "sh",
+    "cpu_ticks": 0,
+    "is_root": true,
+    "open_paths": [],
+    "pid": 107397,
+    "ppid": 107396,
+    "state": "S",
+    "stdin": "/dev/pts/0",
+    "stdin_tty": true,
+    "syscall": {
+     "args": [
+      0,
+      140728315927311,
+      1,
+      0,
+      0,
+      0
+     ],
+     "name": "read",
+     "nr": 0
+    },
+    "wchan": "wait_woken"
+   }
+  ],
+  "proxy_vars": [],
+  "root_pid": 107397,
+  "sockets": [],
+  "tail": "",
+  "version": 1
+ }
+}

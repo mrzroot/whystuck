@@ -1,0 +1,63 @@
+{
+ "expect": "confirm",
+ "name": "confirm-python-input",
+ "snapshot": {
+  "alt_screen": false,
+  "capabilities": {
+   "collector": "linux-proc",
+   "sockets": true,
+   "syscall": true
+  },
+  "command": [
+   "/usr/bin/python3",
+   "-c",
+   "input('Proceed? [y/N] ')"
+  ],
+  "cpu_fraction": 0.0,
+  "idle_seconds": 1.0014729449994775,
+  "lock_holders": {},
+  "platform": "linux",
+  "processes": [
+   {
+    "argv": [
+     "/usr/bin/python3",
+     "-c",
+     "input('Proceed? [y/N] ')"
+    ],
+    "blocking_read": {
+     "fd": 0,
+     "inferred": false,
+     "target": "/dev/pts/0",
+     "tty": true
+    },
+    "comm": "python3",
+    "cpu_ticks": 0,
+    "is_root": true,
+    "open_paths": [],
+    "pid": 107386,
+    "ppid": 107385,
+    "state": "S",
+    "stdin": "/dev/pts/0",
+    "stdin_tty": true,
+    "syscall": {
+     "args": [
+      0,
+      100935936,
+      1024,
+      0,
+      0,
+      0
+     ],
+     "name": "read",
+     "nr": 0
+    },
+    "wchan": "wait_woken"
+   }
+  ],
+  "proxy_vars": [],
+  "root_pid": 107386,
+  "sockets": [],
+  "tail": "Proceed? [y/N] ",
+  "version": 1
+ }
+}

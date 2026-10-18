@@ -1,0 +1,13 @@
+--- whystuck ---------------------------------------------------
+ No output for 20s | pid 4242 | git log
+ > STUCK: Waiting in a pager  [confidence: high]
+   Output was handed to a pager that waits for you to press q.
+ Evidence
+   * descendant process is a pager: less (pid 4243)
+   * last output line looks like a pager prompt: "(END)"
+   * pid 4243 (less): blocked in read() on fd 0 -> /dev/tty (terminal input)
+ Fix (non-interactive)
+   * git --no-pager log
+   * GIT_PAGER=cat PAGER=cat git log
+   * export PAGER=cat GIT_PAGER=cat   # once, for the whole session
+----------------------------------------------------------------

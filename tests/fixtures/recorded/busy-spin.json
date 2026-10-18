@@ -1,0 +1,47 @@
+{
+ "expect": "busy",
+ "name": "busy-spin",
+ "snapshot": {
+  "alt_screen": false,
+  "capabilities": {
+   "collector": "linux-proc",
+   "sockets": true,
+   "syscall": false
+  },
+  "command": [
+   "/usr/bin/python3",
+   "-c",
+   "while True: pass"
+  ],
+  "cpu_fraction": 0.9998057757302451,
+  "idle_seconds": 1.0016069739995146,
+  "lock_holders": {},
+  "platform": "linux",
+  "processes": [
+   {
+    "argv": [
+     "/usr/bin/python3",
+     "-c",
+     "while True: pass"
+    ],
+    "blocking_read": null,
+    "comm": "python3",
+    "cpu_ticks": 100,
+    "is_root": true,
+    "open_paths": [],
+    "pid": 116574,
+    "ppid": 116573,
+    "state": "R",
+    "stdin": "/dev/pts/0",
+    "stdin_tty": true,
+    "syscall": null,
+    "wchan": "0"
+   }
+  ],
+  "proxy_vars": [],
+  "root_pid": 116574,
+  "sockets": [],
+  "tail": "",
+  "version": 1
+ }
+}

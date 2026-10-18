@@ -1,0 +1,71 @@
+{
+ "expect": "server",
+ "name": "server-http",
+ "snapshot": {
+  "alt_screen": false,
+  "capabilities": {
+   "collector": "linux-proc",
+   "sockets": true,
+   "syscall": true
+  },
+  "command": [
+   "/usr/bin/python3",
+   "-m",
+   "http.server",
+   "0",
+   "--bind",
+   "127.0.0.1"
+  ],
+  "cpu_fraction": 0.0,
+  "idle_seconds": 1.0012953370005562,
+  "lock_holders": {},
+  "platform": "linux",
+  "processes": [
+   {
+    "argv": [
+     "/usr/bin/python3",
+     "-m",
+     "http.server",
+     "0",
+     "--bind",
+     "127.0.0.1"
+    ],
+    "blocking_read": null,
+    "comm": "python3",
+    "cpu_ticks": 3,
+    "is_root": true,
+    "open_paths": [],
+    "pid": 112374,
+    "ppid": 112290,
+    "state": "S",
+    "stdin": "/dev/pts/0",
+    "stdin_tty": true,
+    "syscall": {
+     "args": [
+      140497179330304,
+      1,
+      500,
+      0,
+      0,
+      0
+     ],
+     "name": "poll",
+     "nr": 7
+    },
+    "wchan": "do_poll.constprop.0"
+   }
+  ],
+  "proxy_vars": [],
+  "root_pid": 112374,
+  "sockets": [
+   {
+    "local": "127.0.0.1:34949",
+    "pid": 112374,
+    "remote": "0.0.0.0:0",
+    "state": "LISTEN"
+   }
+  ],
+  "tail": "Serving HTTP on 127.0.0.1 port 34949 (http://127.0.0.1:34949/) ...\n",
+  "version": 1
+ }
+}

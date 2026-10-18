@@ -1,0 +1,56 @@
+{
+ "expect": "sleeping",
+ "name": "sleeping",
+ "snapshot": {
+  "alt_screen": false,
+  "capabilities": {
+   "collector": "linux-proc",
+   "sockets": true,
+   "syscall": true
+  },
+  "command": [
+   "sleep",
+   "30"
+  ],
+  "cpu_fraction": 0.0,
+  "idle_seconds": 1.0017041889987013,
+  "lock_holders": {},
+  "platform": "linux",
+  "processes": [
+   {
+    "argv": [
+     "sleep",
+     "30"
+    ],
+    "blocking_read": null,
+    "comm": "sleep",
+    "cpu_ticks": 0,
+    "is_root": true,
+    "open_paths": [],
+    "pid": 116370,
+    "ppid": 116369,
+    "state": "S",
+    "stdin": "/dev/pts/0",
+    "stdin_tty": true,
+    "syscall": {
+     "args": [
+      0,
+      0,
+      140728378935376,
+      140728378935440,
+      0,
+      0
+     ],
+     "name": "clock_nanosleep",
+     "nr": 230
+    },
+    "wchan": "hrtimer_nanosleep"
+   }
+  ],
+  "proxy_vars": [],
+  "root_pid": 116370,
+  "sockets": [],
+  "tail": "",
+  "version": 1
+ }
+}

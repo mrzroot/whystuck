@@ -1,0 +1,12 @@
+--- whystuck ---------------------------------------------------
+ No output for 20s | pid 4242 | python3 -m http.server
+ > NOT STUCK: Running a server  [confidence: high]
+   It is running a server. It will keep running until stopped; that is normal, not a hang.
+ Evidence
+   * listening TCP socket: 0.0.0.0:8000 (pid 4242)
+   * output says: "Serving HTTP on 0.0.0.0 port 8000 ..."
+ If you need it to finish / not wait
+   * nohup python3 -m http.server > server.log 2>&1 &   # start it in the background, then poll the port
+   * use a process manager / a second terminal for servers, and run tests or curl against it from another command
+   * agents: do not wait for a server command to exit; start it detached and check the port
+----------------------------------------------------------------

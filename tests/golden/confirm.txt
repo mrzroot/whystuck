@@ -1,0 +1,13 @@
+--- whystuck ---------------------------------------------------
+ No output for 20s | pid 4242 | apt-get install ripgrep
+ > STUCK: Waiting for a yes/no answer  [confidence: high]
+   The command is waiting for a yes/no (or Enter) answer.
+ Evidence
+   * last output line is a yes/no style prompt: "Do you want to continue? [Y/n]"
+   * pid 4242 (apt-get): blocked in read() on fd 0 -> /dev/pts/3 (terminal input)
+ Fix (non-interactive)
+   * DEBIAN_FRONTEND=noninteractive apt-get install -y ripgrep
+   * yes | apt-get install ripgrep   # answers y to everything: only for commands you trust
+   * check `apt-get --help` for --yes / -y / --force / --non-interactive
+   * feed the answer instead: printf 'y\n' | whystuck -- apt-get install ripgrep
+----------------------------------------------------------------
