@@ -118,7 +118,7 @@ def test_unknown_never_pretends():
 
 def test_stuck_flag_matches_rule_table():
     table = {r.id: r.stuck for r in whystuck.RULES}
-    for name, s, exp in CASES:
+    for _name, s, exp in CASES:
         assert whystuck.classify(s).stuck == table[exp]
 
 

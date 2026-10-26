@@ -974,7 +974,7 @@ def _collect_linux(root: int, *, session: bool, sample: float, tail: str) -> Tup
                 blocking = {"fd": fd, "target": tgt, "tty": _is_tty_target(tgt), "inferred": False}
         elif syscall is None and not sc_raw and wchan in _TTY_WCHAN and _is_tty_target(stdin_t) and st["state"] == "S":
             blocking = {"fd": 0, "target": stdin_t, "tty": True, "inferred": True}
-        for fdn, target in fds.items():
+        for target in fds.values():
             if target.startswith("socket:["):
                 info = tcp.get(target[8:-1])
                 if info:
