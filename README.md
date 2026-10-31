@@ -1,3 +1,15 @@
+<p align="center"><img src=".github/assets/banner.svg" alt="whystuck: Your command hung. Here is why, and what to run instead." width="100%"></p>
+
+<p align="center">
+  <a href="https://github.com/mrzroot/whystuck/releases"><img alt="Latest release" src="https://img.shields.io/github/v/release/mrzroot/whystuck?style=flat-square"></a>
+  <a href="LICENSE"><img alt="License" src="https://img.shields.io/github/license/mrzroot/whystuck?style=flat-square"></a>
+  <img alt="Python 3.9+" src="https://img.shields.io/badge/python-3.9%2B-3776ab?style=flat-square">
+  <img alt="No dependencies" src="https://img.shields.io/badge/dependencies-none-brightgreen?style=flat-square">
+  <a href="https://github.com/mrzroot/whystuck/commits"><img alt="Last commit" src="https://img.shields.io/github/last-commit/mrzroot/whystuck?style=flat-square"></a>
+</p>
+
+<p align="center"><a href="https://mrzroot.github.io/whystuck/">Website</a> · <a href="README.fa.md">فارسی</a> · <a href="CHANGELOG.md">Changelog</a> · <a href="CONTRIBUTING.md">Contributing</a></p>
+
 <div align="center">
 
 # whystuck
