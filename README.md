@@ -8,7 +8,7 @@ Run any command with an idle watchdog. When it goes quiet, `whystuck` inspects t
 waiting in a **pager**, an **editor**, a **y/N prompt**, a **password prompt**, **watch mode**, a **lock**, a stalled
 **network connect**, or is simply a **server** or **busy**, with the evidence and the non-interactive fix.
 
-[![CI](https://github.com/mrzroot/whystuck/actions/workflows/ci.yml/badge.svg)](https://github.com/mrzroot/whystuck/actions/workflows/ci.yml)
+
 ![python](https://img.shields.io/badge/python-3.9%E2%80%933.13-blue)
 ![deps](https://img.shields.io/badge/dependencies-none-brightgreen)
 ![license](https://img.shields.io/badge/license-MIT-lightgrey)
