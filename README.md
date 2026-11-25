@@ -69,6 +69,19 @@ Try it without touching anything (offline, no keys, a few seconds per scenario):
 whystuck --demo
 ```
 
+
+## Is the command waiting or doing work?
+
+The offline pager example gives you a known stall. Look at the verdict and then the evidence, not just the idle interval.
+
+```sh
+whystuck --demo --only pager
+```
+
+For a process already running, use the read-only --explain mode. Start without --kill: that option can stop the whole process group. Remove tokens, arguments and local paths before sharing a report.
+
+See the [bilingual scenario on the project page](docs/index.html#first-check).
+
 ## Usage
 
 ```text
