@@ -19,7 +19,7 @@
 <link rel="preload" href="fonts/vazirmatn-400-800-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="site.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareSourceCode", "name": "whystuck", "description": "Run any command with an idle watchdog; when it hangs, whystuck says why (pager, editor, y/N prompt, password, watch mode, lock, stalled connect) and prints the non-interactive fix.", "codeRepository": "https://github.com/mrzroot/whystuck", "url": "https://mrzroot.github.io/whystuck/", "programmingLanguage": "Python", "license": "https://opensource.org/licenses/MIT", "version": "0.1.0", "author": {"@type": "Person", "name": "Mohammadreza Zare", "url": "https://github.com/mrzroot"}}</script>
-<link rel="stylesheet" href="/assets/studio-mark.css"></head>
+<link rel="stylesheet" href="/assets/studio-mark.css"><link rel="stylesheet" href="/assets/portfolio/embed.css"><script defer src="/assets/portfolio/exhibit.js"></script></head>
 <body class="p-whystuck">
 <a class="skip" href="#main"><span class="l-en">Skip to content</span><span class="l-fa" lang="fa">رفتن به محتوا</span></a>
 <header class="top"><div class="wrap">
@@ -44,11 +44,32 @@
   </div>
   <div><div class="term"><div class="term-bar"><i></i><i></i><i></i><span>zsh</span><b>whystuck</b></div><pre class="hero-pre" id="hero-pre" aria-label="whystuck demo: git log stuck in a pager, diagnosed with evidence and a fix"><code></code></pre></div></div>
 </div></section>
-<aside class="studio-project-entry" style="--entry-color:#ffaa6d">
-  <img src="/assets/thumbs/whystuck.webp" alt="" width="160" height="100" loading="lazy" decoding="async">
-  <div><strong><span class="l-en" lang="en">Read the silence</span><span class="l-fa" lang="fa">سکوت فرایند را بخوان</span></strong><small><span class="l-en" lang="en">Inspect the process and stdin</span><span class="l-fa" lang="fa">فرایند و ورودی را بررسی کن</span></small></div>
-  <a href="/playground/?project=whystuck"><span class="l-en" lang="en">Try the case ↗</span><span class="l-fa" lang="fa">سناریو را امتحان کن ↗</span></a>
-</aside>
+<div class="atlas-embedded" data-motif="pulse" style="--exhibit-hue:20"><section class="exhibit-studio" id="portfolio-example" data-project="whystuck" data-motif="pulse" data-state="0" aria-labelledby="portfolio-example-title">
+    <div class="exhibit-studio-head"><div><p class="exhibit-kicker"><span class="pf-en" lang="en">Illustrative sample</span><span class="pf-fa" lang="fa">دادهٔ نمونه</span></p><h2 id="portfolio-example-title"><span class="pf-en" lang="en">Move along the event trace</span><span class="pf-fa" lang="fa">روی خط رویداد جابه‌جا شو</span></h2></div>
+       <a href="/projects/guide/whystuck/"><span class="pf-en" lang="en">Interactive introduction</span><span class="pf-fa" lang="fa">معرفی تعاملی</span> <i class="exhibit-arrow" aria-hidden="true"></i></a></div>
+    <div class="exhibit-lab">
+      <div class="stage-picture" aria-hidden="true">
+        <div class="stage-sign"><i></i><i></i><i></i><strong dir="ltr">whystuck</strong></div>
+
+        <div class="stage-track" dir="ltr"></div>
+        <div class="stage-evidence" dir="ltr"><span dir="auto">START</span><span dir="auto">45s idle</span><span dir="auto">stdin open</span></div>
+      </div>
+      <div class="stage-work">
+        <p><span class="pf-en" lang="en">A subprocess has printed nothing for 45 seconds. It inherited stdin and never returned. What do you inspect first?</span><span class="pf-fa" lang="fa">یک زیرفرایند ۴۵ ثانیه هیچ خروجی ندارد. ورودی استاندارد را به ارث برده و هنوز تمام نشده. اول چه چیز را بررسی می‌کنی؟</span></p>
+        <div class="stage-actions" role="group" aria-label="Example controls / کنترل‌های نمونه">
+          <button type="button" data-stage="1" aria-pressed="false"><span class="pf-en" lang="en">Inspect the process and stdin</span><span class="pf-fa" lang="fa">فرایند و ورودی را بررسی کن</span><i class="exhibit-arrow" aria-hidden="true"></i></button><button type="button" data-stage="2" aria-pressed="false"><span class="pf-en" lang="en">Double the timeout</span><span class="pf-fa" lang="fa">زمان انتظار را دو برابر کن</span><i class="exhibit-arrow" aria-hidden="true"></i></button>
+        </div>
+        <output class="stage-result" aria-live="polite"><span class="pf-en" lang="en">Try a response to see its effect.</span><span class="pf-fa" lang="fa">یک کار را انتخاب کن و اثرش را ببین.</span></output>
+        <div class="stage-foot">
+          <button type="button" data-stage="0" aria-pressed="true"><span class="pf-en" lang="en">Reset example</span><span class="pf-fa" lang="fa">بازنشانی نمونه</span></button>
+          <input type="range" min="0" max="2" value="0" step="1" aria-label="Example position / مرحلهٔ نمونه">
+        </div>
+      </div>
+    </div>
+   </section>
+    <p class="exhibit-takeaway"><span class="pf-en" lang="en">Check process state and waiting input together. A longer timeout alone cannot identify the reason for silence.</span><span class="pf-fa" lang="fa">وضعیت فرایند و انتظار برای ورودی را کنار هم بررسی کن. زمان انتظار بیشتر به‌تنهایی دلیل سکوت را پیدا نمی‌کند.</span></p>
+    <script type="application/json" data-embed-project>{"entries":[{"id":"whystuck","group":"systems","motif":"pulse","color":"#ffaa6d","title":["Read the silence","سکوت فرایند را بخوان"],"brief":["A subprocess has printed nothing for 45 seconds. It inherited stdin and never returned. What do you inspect first?","یک زیرفرایند ۴۵ ثانیه هیچ خروجی ندارد. ورودی استاندارد را به ارث برده و هنوز تمام نشده. اول چه چیز را بررسی می‌کنی؟"],"actions":[["Inspect the process and stdin","فرایند و ورودی را بررسی کن"],["Double the timeout","زمان انتظار را دو برابر کن"]],"outcomes":[["The sample process is waiting for input. Check whether the command supports a non-interactive flag.","فرایند نمونه منتظر ورودی است. بررسی کن دستور گزینهٔ اجرای غیرتعاملی دارد یا خیر."],["The timer runs longer. The same subprocess remains blocked on input.","زمان بیشتری می‌گذرد و همان فرایند همچنان منتظر ورودی می‌ماند."]],"evidence":[["START","45s idle","stdin open"],["PROCESS","stdin wait","input required"],["START","90s idle","stdin open"]],"name":"whystuck","kicker":["Hung-command diagnosis","تشخیص دستور گیرکرده"],"intro":["Run a command with an idle watchdog. The report distinguishes a prompt, pager or editor from a process that is still working.","دستور را با ناظر بی‌حرکتی اجرا کنید. گزارش فرقِ انتظار برای ورودی، pager یا ویرایشگر را با فرایندِ هنوز فعال نشان می‌دهد."],"hint":["Use a harmless local command that waits for input and compare its report with an intentionally busy command.","یک دستور محلیِ بی‌خطر که منتظر ورودی می‌ماند امتحان کنید و گزارشش را با یک دستورِ عمداً پرکار مقایسه کنید."],"site":"/whystuck/","source":"https://github.com/mrzroot/whystuck","layout":"terminal","hue":20,"image":"/assets/thumbs/whystuck.webp"}],"labels":{"map":["Project Atlas","اطلس پروژه‌ها"],"mapIntro":["Four ways to explore the projects. Choose a project to see what it does and open its interactive introduction.","چهار مسیر برای گشتن میان پروژه‌ها. یکی را انتخاب کن تا ببینی چه کار می‌کند و معرفی تعاملی‌اش را باز کنی."],"agents":["AI tooling","ابزارهای هوش مصنوعی"],"language":["Language and data","زبان و داده"],"systems":["Systems","سامانه‌ها"],"showcase":["Design and demos","طراحی و دمو"],"projects":["All projects","همهٔ پروژه‌ها"],"open":["Interactive introduction","معرفی تعاملی"],"test":["Try the example","نمونه را امتحان کن"],"story":["The situation","مسئله"],"reference":["Inspect the project","بررسی پروژه"],"source":["View source on GitHub","کد منبع در گیت‌هاب"],"demo":["Open project website","باز کردن سایت پروژه"],"guide":["Suggested first step","قدم اول پیشنهادی"],"sample":["Illustrative sample","دادهٔ نمونه"],"result":["What happens","نتیجه"],"choose":["Try a response to see its effect.","یک کار را انتخاب کن و اثرش را ببین."],"still":["Initial state","حالت اولیه"],"reset":["Reset example","بازنشانی نمونه"],"more":["Explore another project","یک پروژهٔ دیگر ببین"]}}</script>
+  </div>
 
 <section id="problem" aria-labelledby="problem-h"><div class="wrap">
   <p class="label"><span class="l-en">The problem</span><span class="l-fa" lang="fa">مسئله</span></p><h2 id="problem-h"><span class="l-en">Run any command with an idle watchdog. When it hangs, whystuck tells you why and what to run instead.</span><span class="l-fa" lang="fa">هر دستوری را با ناظر بی‌حرکتی اجرا کنید؛ اگر گیر کرد، whystuck دلیلش را می‌گوید و دستور جایگزین را نشان می‌دهد.</span></h2>
