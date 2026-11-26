@@ -59,3 +59,14 @@ def test_rule_table_is_well_formed():
     assert ids[-1] == "unknown"
     for r in whystuck.RULES:
         assert r.doc and r.title
+
+
+def test_list_verdicts_cli_text_and_json(capsys):
+    assert whystuck.main(["--list-verdicts"]) == 0
+    out = capsys.readouterr().out
+    assert "confirm" in out and "Waiting for a yes/no answer" in out
+
+    assert whystuck.main(["--list-verdicts", "--json"]) == 0
+    payload = json.loads(capsys.readouterr().out)
+    assert payload["tool"] == "whystuck" and payload["version"] == whystuck.__version__
+    assert [v["id"] for v in payload["verdicts"]] == [r.id for r in whystuck.RULES]

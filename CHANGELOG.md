@@ -3,6 +3,12 @@
 All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses [Semantic Versioning](https://semver.org/).
 
+## [0.2.0] - 2026-11-26
+
+### Added
+- `--list-verdicts` (with `--json` support) to inspect all verdict ids, titles, `stuck` flags, and descriptions without running a command.
+- CLI tests in `tests/test_render.py` covering `--list-verdicts` text and JSON output.
+
 ## [0.1.0] - 2026-10-18
 
 First release.

@@ -44,7 +44,7 @@ try:  # POSIX only; importing the module must still work elsewhere
 except ImportError:  # pragma: no cover - Windows
     fcntl = pty = select = termios = tty = None  # type: ignore
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 EXIT_USAGE = 2
 EXIT_TIMEOUT = 124   # --timeout reached (same as GNU timeout)
@@ -1679,6 +1679,16 @@ def _print_rules(out: Any) -> None:
         out.write(f"  {r.id:<11} {'stuck    ' if r.stuck else 'not stuck'}  {r.doc}\n")
 
 
+def _print_verdicts(out: Any, as_json: bool = False) -> None:
+    verdicts = [{"id": r.id, "title": r.title, "stuck": r.stuck, "doc": r.doc} for r in RULES]
+    if as_json:
+        out.write(json.dumps({"tool": "whystuck", "version": __version__, "verdicts": verdicts}, indent=2, ensure_ascii=False) + "\n")
+        return
+    out.write("whystuck verdict catalog (evaluation order):\n\n")
+    for v in verdicts:
+        out.write(f"  {v['id']:<11} {'stuck    ' if v['stuck'] else 'not stuck'}  {v['title']} — {v['doc']}\n")
+
+
 def _build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="whystuck", usage="whystuck [options] [--] COMMAND [ARGS...]",
                                 description="Run a command with an idle watchdog; when it stalls, say why and how to fix it.",
@@ -1696,6 +1706,7 @@ def _build_parser() -> argparse.ArgumentParser:
     p.add_argument("--demo", action="store_true", help="run bundled offline scenarios that stall on purpose")
     p.add_argument("--only", metavar="LIST", help="with --demo: comma-separated scenario ids")
     p.add_argument("--rules", action="store_true", help="list the detection rules and exit")
+    p.add_argument("--list-verdicts", action="store_true", help="list all verdict ids, titles, and stuck flags (honors --json)")
     p.add_argument("--color", choices=("auto", "always", "never"), default="auto")
     p.add_argument("--include-snapshot", action="store_true", help="include the raw evidence snapshot in --json output")
     p.add_argument("--version", action="version", version=f"whystuck {__version__}")
@@ -1725,6 +1736,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
     if args.rules:
         _print_rules(sys.stdout)
+        return 0
+    if args.list_verdicts:
+        _print_verdicts(sys.stdout, as_json=args.json)
         return 0
     if args.demo:
         return run_demo(only=[x for x in (args.only or "").split(",") if x] or None,

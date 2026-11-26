@@ -74,7 +74,7 @@ whystuck --demo
 ```text
 whystuck [--idle 20] [--timeout 600] [--kill] [--json] [--stdin pty|null|closed] [--] COMMAND [ARGS...]
 whystuck --explain PID [--tail-file FILE] [--json]
-whystuck --demo [--only pager,editor,...]      whystuck --rules
+whystuck --demo [--only pager,editor,...]      whystuck --rules      whystuck --list-verdicts [--json]
 ```
 
 ```bash
