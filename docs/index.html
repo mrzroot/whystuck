@@ -19,7 +19,7 @@
 <link rel="preload" href="fonts/vazirmatn-400-800-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="site.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareSourceCode", "name": "whystuck", "description": "Run any command with an idle watchdog; when it hangs, whystuck says why (pager, editor, y/N prompt, password, watch mode, lock, stalled connect) and prints the non-interactive fix.", "codeRepository": "https://github.com/mrzroot/whystuck", "url": "https://mrzroot.github.io/whystuck/", "programmingLanguage": "Python", "license": "https://opensource.org/licenses/MIT", "version": "0.1.0", "author": {"@type": "Person", "name": "Mohammadreza Zare", "url": "https://github.com/mrzroot"}}</script>
-</head>
+<link rel="stylesheet" href="/assets/studio-mark.css"></head>
 <body class="p-whystuck">
 <a class="skip" href="#main"><span class="l-en">Skip to content</span><span class="l-fa" lang="fa">رفتن به محتوا</span></a>
 <header class="top"><div class="wrap">
@@ -44,6 +44,11 @@
   </div>
   <div><div class="term"><div class="term-bar"><i></i><i></i><i></i><span>zsh</span><b>whystuck</b></div><pre class="hero-pre" id="hero-pre" aria-label="whystuck demo: git log stuck in a pager, diagnosed with evidence and a fix"><code></code></pre></div></div>
 </div></section>
+<aside class="studio-project-entry" style="--entry-color:#ffaa6d">
+  <img src="/assets/thumbs/whystuck.webp" alt="" width="160" height="100" loading="lazy" decoding="async">
+  <div><strong><span class="l-en" lang="en">Read the silence</span><span class="l-fa" lang="fa">سکوت فرایند را بخوان</span></strong><small><span class="l-en" lang="en">Inspect the process and stdin</span><span class="l-fa" lang="fa">فرایند و ورودی را بررسی کن</span></small></div>
+  <a href="/playground/?project=whystuck"><span class="l-en" lang="en">Try the case ↗</span><span class="l-fa" lang="fa">سناریو را امتحان کن ↗</span></a>
+</aside>
 
 <section id="problem" aria-labelledby="problem-h"><div class="wrap">
   <p class="label"><span class="l-en">The problem</span><span class="l-fa" lang="fa">مسئله</span></p><h2 id="problem-h"><span class="l-en">Run any command with an idle watchdog. When it hangs, whystuck tells you why and what to run instead.</span><span class="l-fa" lang="fa">هر دستوری را با ناظر بی‌حرکتی اجرا کنید؛ اگر گیر کرد، whystuck دلیلش را می‌گوید و دستور جایگزین را نشان می‌دهد.</span></h2>
